@@ -9,4 +9,5 @@ urlpatterns = [
     path('', home),  # homepage at root '/'
     path('admin/', admin.site.urls),
     path('api/', include('accounts.urls')),  # include accounts URLs here under /api/
+    path('api/custom_sessions/', include('custom_sessions.urls')),
 ]
