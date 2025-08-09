@@ -4,13 +4,13 @@ from django.contrib.auth.password_validation import validate_password
 
 User = get_user_model()
 
-# Serializer for user data (read-only or general use)
+# Existing serializers ...
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email', 'first_name', 'last_name', 'role', 'bio', 'interests']
 
-# Serializer for user registration (sign-up)
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
     password2 = serializers.CharField(write_only=True, required=True)
@@ -32,18 +32,15 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
-# Serializer for login input validation (you can use this in your login view)
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(required=True)
     password = serializers.CharField(write_only=True, required=True)
 
-# Serializer for user profile retrieval and update
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email', 'first_name', 'last_name', 'role', 'bio', 'interests']
 
-# Serializer for changing password
 class ChangePasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True, validators=[validate_password])
@@ -58,3 +55,24 @@ class ChangePasswordSerializer(serializers.Serializer):
         if attrs['old_password'] == attrs['new_password']:
             raise serializers.ValidationError("New password cannot be the same as old password")
         return attrs
+
+# NEW Mentor application serializer
+class MentorApplicationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['role', 'mentor_status', 'skills', 'portfolio_url']
+
+    def validate_role(self, value):
+        if value != 'mentor':
+            raise serializers.ValidationError("Role must be 'mentor' to apply as mentor.")
+        return value
+
+    def update(self, instance, validated_data):
+        validated_data['mentor_status'] = 'pending'  # always set status to pending on update
+        return super().update(instance, validated_data)
+
+
+class MentorApprovalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['mentor_status']
