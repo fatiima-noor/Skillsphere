@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'bookings', 
     'mentors', 
     'drf_spectacular',
+    'messaging',
+    'admin_stats',
 ]
 
 MIDDLEWARE = [

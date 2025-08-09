@@ -43,3 +43,10 @@ class Feedback(models.Model):
 
     def __str__(self):
         return f"Feedback by {self.user.username} for session {self.session.id}"
+    
+class SessionResource(models.Model):
+    session = models.ForeignKey(Session, related_name='resources', on_delete=models.CASCADE)
+    uploaded_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    file = models.FileField(upload_to='session_resources/')
+    description = models.CharField(max_length=255, blank=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
