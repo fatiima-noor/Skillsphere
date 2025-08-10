@@ -18,6 +18,8 @@ import BookingsHistory from './pages/admin/BookingsHistory';
 import MentorApplications from './pages/admin/MentorApplications';
 import MentorApply from './pages/mentor/MentorApply';  // <-- new import
 
+import Chatbot from './components/common/Chatbot'; // <-- Import Chatbot here
+
 function App() {
   return (
     <Router>
@@ -62,6 +64,9 @@ function App() {
             </Routes>
           </main>
           <Footer />
+
+          {/* Chatbot added here so it's visible on all pages */}
+          <Chatbot />
         </div>
       </AuthProvider>
     </Router>
