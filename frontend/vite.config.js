@@ -8,4 +8,14 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     react()],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8000', // Your Django server
+        changeOrigin: true,
+        // Remove the rewrite line completely
+        secure: false,
+      }
+    }
+  }
 })
