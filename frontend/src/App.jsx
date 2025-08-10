@@ -15,6 +15,7 @@ import MentorDashboard from './pages/mentor/Dashboard';
 import AdminDashboard from './pages/admin/Dashboard';
 import MentorList from './pages/learner/MentorList';
 import BookingsHistory from './pages/admin/BookingsHistory';
+import MentorApplications from './pages/admin/MentorApplications';  // <-- new import
 
 function App() {
   return (
@@ -42,6 +43,11 @@ function App() {
               {/* Admin routes */}
               <Route path="/admin" element={<PrivateRoute allowedRoles={['admin']}><AdminDashboard /></PrivateRoute>} />
               <Route path="/admin/bookings-history" element={<PrivateRoute allowedRoles={['admin']}><BookingsHistory /></PrivateRoute>} />
+              <Route path="/admin/mentor-applications" element={
+                <PrivateRoute allowedRoles={['admin']}>
+                  <MentorApplications />
+                </PrivateRoute>
+              } />
               
               <Route path="/404" element={<Error404 />} />
               <Route path="*" element={<Navigate to="/404" />} />

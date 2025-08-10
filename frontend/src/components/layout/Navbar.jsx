@@ -19,9 +19,11 @@ const Navbar = () => {
               <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                 <Link
                   to={
-                    user.role === 'learner' ? '/learner' :
-                    user.role === 'mentor' ? '/mentor' :
-                    '/admin'
+                    user.role === 'learner'
+                      ? '/learner'
+                      : user.role === 'mentor'
+                      ? '/mentor'
+                      : '/admin'
                   }
                   className="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
                 >
@@ -40,12 +42,20 @@ const Navbar = () => {
 
                 {/* Admin specific */}
                 {user.role === 'admin' && (
-                  <Link
-                    to="/admin/bookings-history"
-                    className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                  >
-                    Bookings History
-                  </Link>
+                  <>
+                    <Link
+                      to="/admin/bookings-history"
+                      className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                    >
+                      Bookings History
+                    </Link>
+                    <Link
+                      to="/admin/mentor-applications"
+                      className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                    >
+                      Mentor Applications
+                    </Link>
+                  </>
                 )}
 
                 <Link
