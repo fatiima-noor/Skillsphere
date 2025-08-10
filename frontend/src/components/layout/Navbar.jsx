@@ -32,12 +32,20 @@ const Navbar = () => {
 
                 {/* Learner specific */}
                 {user.role === 'learner' && (
-                  <Link
-                    to="/learner/mentors"
-                    className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                  >
-                    Browse Mentors
-                  </Link>
+                  <>
+                    <Link
+                      to="/learner/mentors"
+                      className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                    >
+                      Browse Mentors
+                    </Link>
+                    <Link
+                      to="/mentor/apply"
+                      className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                    >
+                      Become a Mentor
+                    </Link>
+                  </>
                 )}
 
                 {/* Admin specific */}
