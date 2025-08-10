@@ -5,7 +5,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
 import Profile from './pages/Profile';
-import ChangePassword from './pages/ChangePassword'; // Add this import
+import ChangePassword from './pages/ChangePassword';
 import Error404 from './pages/Error404';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
@@ -13,6 +13,7 @@ import PrivateRoute from './components/common/PrivateRoute';
 import LearnerDashboard from './pages/learner/Dashboard';
 import MentorDashboard from './pages/mentor/Dashboard';
 import AdminDashboard from './pages/admin/Dashboard';
+import MentorList from './pages/learner/MentorList';
 
 function App() {
   return (
@@ -33,6 +34,8 @@ function App() {
               
               {/* Role-based routes */}
               <Route path="/learner" element={<PrivateRoute allowedRoles={['learner']}><LearnerDashboard /></PrivateRoute>} />
+              <Route path="/learner/mentors" element={<PrivateRoute allowedRoles={['learner']}><MentorList /></PrivateRoute>} />
+              
               <Route path="/mentor" element={<PrivateRoute allowedRoles={['mentor']}><MentorDashboard /></PrivateRoute>} />
               <Route path="/admin" element={<PrivateRoute allowedRoles={['admin']}><AdminDashboard /></PrivateRoute>} />
               
