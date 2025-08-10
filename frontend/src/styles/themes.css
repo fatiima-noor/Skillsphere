@@ -1,0 +1,33 @@
+[data-theme='default'] {
+  --primary-color: #1f2937; /* gray-800 */
+  --text-color: #111827; /* gray-900 */
+}
+
+[data-theme='learner'] {
+  --primary-color: #2563eb; /* blue-600 */
+  --text-color: #1e3a8a; /* blue-900 */
+}
+
+[data-theme='mentor'] {
+  --primary-color: #16a34a; /* green-600 */
+  --text-color: #14532d; /* green-900 */
+}
+
+[data-theme='admin'] {
+  --primary-color: #7c3aed; /* purple-600 */
+  --text-color: #4c1d95; /* purple-900 */
+}
+
+/* Apply to elements */
+[data-theme='learner'] {
+  --primary-color: #2563eb; /* blue-600 */
+  --background-color: #eff6ff; /* light blue */
+  --text-color: #1e3a8a; /* blue-900 */
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+
