@@ -18,11 +18,17 @@ const Navbar = () => {
             {isAuthenticated && (
               <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                 <Link
-                  to={user.role === 'learner' ? '/learner' : user.role === 'mentor' ? '/mentor' : '/admin'}
+                  to={
+                    user.role === 'learner' ? '/learner' :
+                    user.role === 'mentor' ? '/mentor' :
+                    '/admin'
+                  }
                   className="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
                 >
                   Dashboard
                 </Link>
+
+                {/* Learner specific */}
                 {user.role === 'learner' && (
                   <Link
                     to="/learner/mentors"
@@ -31,6 +37,17 @@ const Navbar = () => {
                     Browse Mentors
                   </Link>
                 )}
+
+                {/* Admin specific */}
+                {user.role === 'admin' && (
+                  <Link
+                    to="/admin/bookings-history"
+                    className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                  >
+                    Bookings History
+                  </Link>
+                )}
+
                 <Link
                   to="/profile"
                   className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"

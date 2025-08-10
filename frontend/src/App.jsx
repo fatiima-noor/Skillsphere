@@ -14,6 +14,7 @@ import LearnerDashboard from './pages/learner/Dashboard';
 import MentorDashboard from './pages/mentor/Dashboard';
 import AdminDashboard from './pages/admin/Dashboard';
 import MentorList from './pages/learner/MentorList';
+import BookingsHistory from './pages/admin/BookingsHistory';
 
 function App() {
   return (
@@ -37,7 +38,10 @@ function App() {
               <Route path="/learner/mentors" element={<PrivateRoute allowedRoles={['learner']}><MentorList /></PrivateRoute>} />
               
               <Route path="/mentor" element={<PrivateRoute allowedRoles={['mentor']}><MentorDashboard /></PrivateRoute>} />
+              
+              {/* Admin routes */}
               <Route path="/admin" element={<PrivateRoute allowedRoles={['admin']}><AdminDashboard /></PrivateRoute>} />
+              <Route path="/admin/bookings-history" element={<PrivateRoute allowedRoles={['admin']}><BookingsHistory /></PrivateRoute>} />
               
               <Route path="/404" element={<Error404 />} />
               <Route path="*" element={<Navigate to="/404" />} />
